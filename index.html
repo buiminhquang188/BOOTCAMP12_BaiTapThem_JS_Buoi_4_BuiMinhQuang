@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="index.css" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- BÀI 1  -->
+    <h1>
+      Bài 1: Viết chương trình nhập vào ngày, tháng, năm (Giả sử nhập đúng,
+      không cần kiểm tra hợp lệ). Tìm ngày, tháng, năm của ngày tiếp theo. Tương
+      tự tìm ngày tháng năm của ngày trước đó.
+    </h1>
+    <h2>Sơ đồ 3 khối</h2>
+    <p>Bước 1: Input</p>
+    <ul>
+      <li>nhapNgay, nhapThang, nhapNam</li>
+    </ul>
+    <p>Bước 2: Handle</p>
+    <ul>
+      <li>Tạo biến nhapNgay, nhapThang, nhapNam</li>
+      <li>
+        Tạo biến inNgayTruoc, inThangTruoc, inNamTruoc, inNgaySau, inThangSau,
+        inNamSau
+      </li>
+      <li>Đặt câu lệnh if else if với các điều kiện là</li>
+      <ul>
+        <li>
+          Kiểm tra người dùng có bỏ trống ô input nào không bằng isNaN, nếu
+          không nhập thì sẽ alert nhắc nhở người dùng
+        </li>
+        <li>
+          Kiểm tra xem người dùng có nhập số âm không nếu có nhập số âm thì
+          alert nhắc nhở người dùng không nhập số âm
+        </li>
+        <li>
+          Kiểm tra xem người dùng có nhập số thập phân không, nếu có nhập thì
+          alert cho người dùng không được nhập số thập phân, còn không thì chạy
+          chương trình bên trong
+        </li>
+      </ul>
+      <li>Gán các biến</li>
+      <ul>
+        <li>inNgaysau = nhapNgay + 1 và inNgayTruoc = nhapNgay - 1</li>
+        <li>Gán inThangSau = nhapThang, inNamSau = nhapNam,</li>
+        <li>inThangTruoc = nhapThang, inNamTruoc = nhapNam</li>
+      </ul>
+      <li>Sau đó kiểm tra các trường hợp</li>
+      <ul>
+        <li>
+          TH1: Đối với các tháng 1, 3, 5, 7, 8, 10, 12 là những tháng có 31 ngày
+          sử dụng logic || để chọn từng tháng và logic && để giới hạn ngày từ 0
+          tới 31 ngày
+        </li>
+        <ul>
+          <li>Kiểm tra các trường hợp sau</li>
+          <li>
+            TH1: Nếu nhapNgay==31 và nhapThang != 12 thì sẽ inNgaySau = 1 và
+            inThangSau = nhapThang + 1; tức là khi người dùng nhập vào ngày 31
+            và không phải tháng 12 thì in ngày sau là 1 và in tháng sau = tháng
+            người dùng nhập + 1
+          </li>
+          <li>
+            TH2: Nếu người dùng nhập ngày 31 và tháng 12 thì sẽ in ra ngày và
+            tháng = 1 và in năm = năm người dùng nhập vào + 1
+          </li>
+          <li>
+            TH3: Nếu người dùng nhập ngày 1 thì sẽ in ngày trước đó = 30 vì các
+            tháng trước đều có 30 ngày (trừ tháng 7 & 8 liền kề nhau) và tháng
+            trước = tháng người dùng nhập vào - 1
+          </li>
+          <ul>
+            <li>Kiểm tra các trường hợp</li>
+            <li>
+              TH1: Nếu người dùng nhập vào tháng 3 thì sẽ kiểm tra xem năm đó có
+              là năm nhuận không, nếu là năm nhuận thì in ngày trước = 29;
+            </li>
+            <li>TH2: Nếu không là năm nhuận thì in ngày 28</li>
+            <li>
+              TH3: Nếu người dùng nhập tháng 1 thì sẽ in ngày trước = 31, in
+              tháng trước là 12 và in năm trước = năm người dùng nhập - 1
+            </li>
+            <li>
+              TH4: Xét điều kiện nếu người dùng nhập tháng 8 thì in ngày trước =
+              31 (do tháng 7 cũng có 31 ngày)
+            </li>
+          </ul>
+        </ul>
+        <li>
+          TH2: Đối với các tháng 4, 6, 9, 11 là những tháng có 30 ngày, tương tự
+          như trên xài logic ||, && ở đây giới hạn từ 0 tới 30 ngày
+        </li>
+        <ul>
+          <li>Xét các trường hợp</li>
+          <li>
+            TH1: Nếu người dùng nhập ngày 30 thì sẽ in ngày sau = 1 và in tháng
+            sau = tháng người dùng nhập vào + 1
+          </li>
+          <li>
+            TH2: Nếu người dùng nhập vào ngày 1 thì sẽ in ngày trước là ngày 31
+            (vì các tháng trước 4 6 9 11 đều là 31 ngày) và in tháng trước =
+            tháng người dùng nhập vào - 1;
+          </li>
+        </ul>
+        <li>
+          TH3: Đối với tháng 2 thì xét điều kiện có năm nhuận bằng cách nhapNam
+          % 400 == 0 hoặc (||) nhapNam % 100 != 0 && nhapNam % 4 == 0 tất cả &&
+          giới hạn ngày từ 0 tới 29. Ở đây năm nhuận được tính bằng cách lấy năm
+          đó chia hết cho 400 và 4, trừ lại không chia hết cho 100 ra sẽ có một
+          vài năm có trường hợp đặc biệt (VD:1900 chia hết cho 400, 100 và 4
+          nhưng lại ko có ngày 29 nhuận)
+        </li>
+        <ul>
+          <li>Xét các trường hợp</li>
+          <li>
+            TH1: nếu người dùng nhập vào 29 ngày thì sẽ in ngày sau = 1 và in
+            tháng sau = tháng người dùng nhập vào + 1
+          </li>
+          <li>
+            TH2: Nếu người dùng nhập vào ngày 1 thì in ngày trước = 31(vì tháng
+            1 có 31 ngày) và in tháng trước = tháng người dùng nhập - 1;
+          </li>
+        </ul>
+        <li>
+          TH4: Tương tự với else if với trường hợp còn lại là không phải năm
+          nhuận, giới hạn từ 0 tới 28 ngày, và trường hợp giống như ở trên những
+          giới hạn ngày lại thành 28 ngày
+        </li>
+        <li>
+          Else cuối cùng sẽ alert báo cho người dùng biết là ngày/tháng/năm họ
+          nhập không tồn tài và yêu cầu họ nhập lại
+        </li>
+      </ul>
+    </ul>
+    <p>Bước 3: Output</p>
+    <ul>
+      <li>Xuất ngày tháng năm trước và sau</li>
+    </ul>
+    <form>
+      <div class="form-group">
+        <label for="">Nhập ngày</label>
+        <input
+          class="form-control form-control-lg"
+          type="number"
+          placeholder="Nhập ngày"
+          id="nhapNgay"
+        />
+        <label for="">Nhập tháng</label>
+        <input
+          class="form-control form-control-lg"
+          type="number"
+          placeholder="Nhập tháng"
+          id="nhapThang"
+        />
+        <label for="">Nhập năm</label>
+        <input
+          class="form-control form-control-lg"
+          type="number"
+          placeholder="Nhập năm"
+          id="nhapNam"
+        />
+      </div>
+      <input
+        name=""
+        onclick="btnBai1()"
+        class="btn btn-primary"
+        type="button"
+        value="Tính"
+      />
+      <p id="ketQuaNgayThangNamTruoc"></p>
+      <p id="ketQuaNgayThangNamSau"></p>
+    </form>
+    <!-- BÀI 2  -->
+    <h1>
+      Bài 2: Viết chương trình nhập vào tháng, năm. Cho biết tháng đó có bao
+      nhiêu ngày. (bao gồm tháng của năm nhuận)
+    </h1>
+    <h2>Sơ đồ 3 khối</h2>
+    <p>Bước 1: Input</p>
+    <ul>
+      <li>nhapVaoThang, nhapVaoNam</li>
+    </ul>
+    <p>Bước 2: Handle</p>
+    <ul>
+      <li>Tạo biến nhapVaoThang, nhapVaoNam và inNgay</li>
+      <li>Xét các trường hợp</li>
+      <li>
+        TH1: Nếu người dùng không nhập vào năm hoặc tháng thì sẽ thông báo cho
+        người dùng phải nhập đủ
+      </li>
+      <li>
+        TH2: Nếu người dùng nhập vào năm và tháng số bé hơn không thì sẽ báo cho
+        người dùng nhập lại
+      </li>
+      <li>Nếu người dùng nhập vào đúng thì sẽ chạy các trường hợp bên trong</li>
+      <ul>
+        <li>Xét các trường hợp</li>
+        <li>
+          TH1: Nếu người dùng nhập vào các tháng như 1, 3, 5 , 7, 8, 10, 12. Thì
+          sẽ gán giá trị inNgay = 31 vì các tháng trên có 31 ngày.
+        </li>
+        <li>
+          TH2: Nếu người dùng nhập vào các tháng 4, 6, 9, 11 thì sẽ gán inNgay =
+          30
+        </li>
+        <li>
+          TH3: Nếu người dùng nhập vào tháng 2 thì sẽ xét tiếp các trường hợp
+          bên trong.
+        </li>
+        <ul>
+          <li>Xét các trường hợp</li>
+          <li>
+            TH1: Nếu người dùng nhập vào năm thì sẽ xét điều kiện năm đó có chia
+            hết cho 400 không, hoặc năm đó không chia hết cho 100 và chia hết
+            cho 4 (VD: 1900 - chia hết cho 400, 100 và 4 nhưng không phải là năm
+            nhuận) và gán biến inNgay = 29
+          </li>
+          <li>
+            TH2: Nếu người dùng nhập vào các năm không thoả những điều kiện trên
+            thì gán giá biến inNgay = 28
+          </li>
+        </ul>
+        <li>
+          TH4: Nếu người dùng không nhập những tháng trên thì sẽ báo cho người
+          dùng là không có tháng/năm đó.
+        </li>
+      </ul>
+      <li>
+        Nếu người dùng nhập số thập phân thì sẽ báo cho người dùng nhập lại
+      </li>
+    </ul>
+    <p>Bước 3: Output</p>
+    <ul>
+      <li>Xuất số ngày của tháng</li>
+    </ul>
+    <form>
+      <div class="form-group">
+        <label for="">Nhập tháng</label>
+        <input
+          class="form-control form-control-lg"
+          type="number"
+          placeholder="Nhập tháng"
+          id="nhapVaoThang"
+        />
+        <label for="">Nhập năm</label>
+        <input
+          class="form-control form-control-lg"
+          type="number"
+          placeholder="Nhập năm"
+          id="nhapVaoNam"
+        />
+      </div>
+      <input
+        name=""
+        onclick="btnBai2()"
+        class="btn btn-primary"
+        type="button"
+        value="Tính"
+      />
+      <p id="ketQuaBai2"></p>
+    </form>
+
+    <!-- BÀI 3  -->
+    <h1>
+      Bài 3: Viết chương trình nhập vào số nguyên có 3 chữ số. In ra cách đọc nó
+    </h1>
+    <h2>Sơ đồ 3 khối</h2>
+    <p>Bước 1: Input</p>
+    <ul>
+      <li>nhapSoNguyen</li>
+    </ul>
+    <p>Bước 2: Handle</p>
+    <ul>
+      <li>Tạo biến nhapSoNguyen, hangTram, hangChuc, hangDonVi</li>
+      <li>
+        hangTram, hangChuc, hangDonVi sẽ lấy số nguyên, không có thập phân
+      </li>
+      <li>hangTram = số người dùng nhập / 100</li>
+      <li>hangChuc = số người dùng nhập chia lấy dư 100 và chia thêm cho 10</li>
+      <li>
+        hangDonVi = số người dùng nhập vào chia lấy dư 100 và chia lấy dư 10 nữa
+      </li>
+      <li>
+        TH1: Kiểm tra xem người dùng có bỏ trống input không, nếu có thì thông
+        báo cho người dùng biết
+      </li>
+      <li>
+        TH2: Kiểm tra số người dùng nhập vào là số nguyên hay số thập phân nếu
+        người dùng nhập đúng thì sẽ vào xét các trường hợp bên trong
+      </li>
+      <ul>
+        <li>Xét các trường hợp:</li>
+        <li>
+          TH1: Xét điều kiện nếu người dùng nhập trong khoảng từ 100 -> 999 và
+          từ -100 -> -999, nếu đúng thì chạy chương trình bên trong
+        </li>
+        <ul>
+          <li>Xét các switch</li>
+          <li>
+            switch(hangTram) chứa các case từ -1 -> -9 (có gán chuỗi 'Âm ' đằng
+            trước để phân biệt số âm và số dương) và 1 -> 9 được gán theo cách
+            đọc theo chữ
+          </li>
+          <li>
+            switch(hangChuc) các case từ 1->9 và -1->-9, case 0 tương ứng với
+            'linh' và case 1 tương ứng với 'mười' theo cách đọc
+          </li>
+          <li>
+            switch(hangDonVi) cũng giống như hàng chục những case 0 tương ứng
+            với 'mười ' (VD: 110, 210 -> để so sánh)
+          </li>
+          <li>Xét các trường hợp</li>
+          <li>
+            TH1: Nếu hangChuc là == 0 => tức chuỗi là 'linh' và hàng đơn vị là
+            mười thì sẽ in ra kết quả hàng trăm + trăm thôi, vì hàng chục = 0 ,
+            hàng đơn vị = 0 thì còn lại hàng trăm
+          </li>
+          <li>
+            TH2: Nếu hangChuc và hangDonVi đều là mười thì sẽ in ra là hàng trăm
+            + trăm + hàng chục vì hàng đơn vị đang là số 0 (VD: 210, 220, 550)
+          </li>
+          <li>
+            TH3: Nếu hangChuc là 10 hoặc hangChuc là linh và hangDonVi không
+            phải là mười thì sẽ in ra hangTram + tăm + hangChuc + hangDonVi, VD:
+            215, 205
+          </li>
+          <li>
+            TH4: Nếu hangChuc = các số còn lại trừ mười và hangDonVi == một thì
+            sẽ gán 'mốt' là hangDonVi và in ra hangTram + trăm + hangChuc + mười
+            + hangDonVi (VD: 231 - Hăm trăm ba mươi mốt)
+          </li>
+          <li>
+            TH5: Và các trường hợp còn lại thì in ra hangTram + trăm + hangChuc
+            + mươi + hangDonVi (VD: 255 - Hai trăm năm mươi năm)
+          </li>
+        </ul>
+        <li>
+          TH2: Nếu người dùng nhập sai thì in ra phải nhập đúng 3 số nguyên
+        </li>
+      </ul>
+      <li>
+        TH3: Nếu không nhập đúng thì sẽ báo người dùng không được nhập số thập
+        phân
+      </li>
+    </ul>
+    <p>Bước 3: Output</p>
+    <ul>
+      <li>Xuất ra các đọc của 3 số nguyên</li>
+    </ul>
+    <form>
+      <div class="form-group">
+        <label for="">Nhập vào 3 số nguyên</label>
+        <input
+          class="form-control form-control-lg"
+          type="number"
+          placeholder="Nhập 3 số nguyên"
+          id="nhapSoNguyen"
+        />
+      </div>
+      <input
+        name=""
+        onclick="btnBai3()"
+        class="btn btn-primary"
+        type="button"
+        value="Tính"
+      />
+      <p id="ketQuaBai3"></p>
+    </form>
+
+    <!-- BÀI 4  -->
+    <h1>
+      Bài 4: Cho biết tên và tọa độ nhà của 3 sinh viên. Cho biết tọa độ của
+      trường đại học. Viết chương trình in tên sinh viên xa trường nhất
+    </h1>
+    <h2>Sơ đồ 3 khối</h2>
+    <p>Bước 1: Input</p>
+    <ul>
+      <li>xSinhVien1, ySinhVien1</li>
+      <li>xSinhVien2, ySinhVien2</li>
+      <li>xSinhVien3, ySinhVien3</li>
+    </ul>
+    <p>Bước 2: Handle</p>
+    <ul>
+      <li>Tạo các biến</li>
+      <li>xSinhVien1, ySinhVien1</li>
+      <li>xSinhVien2, ySinhVien2</li>
+      <li>xSinhVien3, ySinhVien3</li>
+      <li>xTruong, yTruong</li>
+      <li>
+        Tính khoảng cách sinh viên 1 2 3 bằng công thức tìm độ dài của vector
+      </li>
+      <li>
+        TH1: Nếu người dùng không nhập thì thông báo cho người dùng nhập đủ toạ
+        độ của 3 sinh viên
+      </li>
+      <li>TH2: Nếu người dùng nhập đủ thì vào xét các trường hợp bên trong</li>
+      <ul>
+        <li>
+          TH1: Nếu khoảng cách sinh viên 1 > khoảng cách sinh viên 2 và khoảng
+          cách sinh viên 1 lớn hơn sinh viên 3 => Sinh Viên 1 xa nhà nhất
+        </li>
+        <li>
+          TH2: Tương tự nhưng lấy sinh viên 2 so sánh với 2 sinh viên còn lại
+        </li>
+        <li>
+          TH3: Tương tự với hai trường hợp kia nhưng lấy sinh viên 3 so sánh với
+          2 sinh viên còn lại
+        </li>
+        <li>
+          TH4: Nếu khoảng cách các sinh viên bằng nhau thì không có sinh viên
+          nào xa trường nhất
+        </li>
+      </ul>
+    </ul>
+    <p>Bước 3: Output</p>
+    <ul>
+      <li>Xuất ra sinh viên xa trường nhất.</li>
+    </ul>
+    <form>
+      <div class="form-group">
+        <label for="">Nhập vào toạ độ sinh viên thứ nhất</label>
+        <input
+          class="form-control form-control-lg"
+          type="number"
+          placeholder="Nhập x"
+          id="xSinhVien1"
+        />
+        <input
+          class="form-control form-control-lg"
+          type="number"
+          placeholder="Nhập y"
+          id="ySinhVien1"
+        />
+        <label for="">Nhập vào toạ độ sinh viên thứ hai</label>
+        <input
+          class="form-control form-control-lg"
+          type="number"
+          placeholder="Nhập x"
+          id="xSinhVien2"
+        />
+        <input
+          class="form-control form-control-lg"
+          type="number"
+          placeholder="Nhập y"
+          id="ySinhVien2"
+        />
+        <label for="">Nhập vào toạ độ sinh viên thứ ba</label>
+        <input
+          class="form-control form-control-lg"
+          type="number"
+          placeholder="Nhập x"
+          id="xSinhVien3"
+        />
+        <input
+          class="form-control form-control-lg"
+          type="number"
+          placeholder="Nhập y"
+          id="ySinhVien3"
+        />
+      </div>
+      <input
+        name=""
+        onclick="btnBai4()"
+        class="btn btn-primary"
+        type="button"
+        value="Tính"
+      />
+    </form>
+    <p id="ketQuaBai4"></p>
+    <!-- MAIN JS -->
+    <script src="index.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
